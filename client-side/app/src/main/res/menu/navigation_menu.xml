@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_movieSearch"
+        android:title="Movie Search" />
+    <item
+        android:id="@+id/menu_movieMemoir"
+        android:title="Movie Memoir" />
+    <item
+        android:id="@+id/menu_watchlist"
+        android:title="Watchlist" />
+    <item
+        android:id="@+id/menu_reports"
+        android:title="Reports" />
+    <item
+        android:id="@+id/menu_maps"
+        android:title="Maps" />
+</menu>

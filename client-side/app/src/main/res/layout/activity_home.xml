@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".activity.HomeActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#eeeeee"
+        android:orientation="vertical">
+
+        <com.xuexiang.xui.widget.actionbar.TitleBar
+            android:id="@+id/home_title_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/xui_config_color_titlebar"
+            app:tb_actionPadding="20dp"
+            app:tb_barHeight="65dp"
+            app:tb_dividerColor="@color/xui_config_color_red"
+            app:tb_sideTextPadding="20dp"
+            app:tb_subTitleText="Hello"
+            app:tb_titleText="Movie Memoir" />
+
+        <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
+            android:id="@+id/home_date"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="15dp"
+            app:sDividerLineType="both"
+            app:sLeftTextString="Date: " />
+
+        <com.xuexiang.xui.widget.imageview.RadiusImageView
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:clickable="false"
+            android:src="@drawable/memoir"
+            app:riv_border_color="@color/xui_config_color_gray_6"
+            app:riv_border_width="1px"
+            app:riv_is_circle="false"
+            app:riv_selected_border_color="@color/xui_config_color_gray_4"
+            app:riv_selected_border_width="1px"
+            app:riv_selected_mask_color="@color/xui_config_color_gray_8" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/home_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nv_home"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="left"
+        app:headerLayout="@layout/nav_header"
+        app:menu="@menu/navigation_menu" />
+</androidx.drawerlayout.widget.DrawerLayout>

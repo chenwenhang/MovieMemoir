@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eeeeee"
+    android:orientation="vertical"
+    tools:context=".activity.MainActivity">
+
+    <com.xuexiang.xui.widget.actionbar.TitleBar
+        android:id="@+id/main_title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/xui_config_color_titlebar"
+        app:tb_actionPadding="20dp"
+        app:tb_barHeight="65dp"
+        app:tb_dividerColor="@color/xui_config_color_red"
+        app:tb_sideTextPadding="20dp"
+        app:tb_titleText="Movie Memoir" />
+
+    <LinearLayout
+        android:id="@+id/ll_loginactivity_two"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_loginactivity_top"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_loginactivity_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Username: " />
+
+            <EditText
+                android:id="@+id/et_loginactivity_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Username" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_loginactivity_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Password: " />
+
+            <EditText
+                android:id="@+id/et_loginactivity_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                android:inputType="textPassword" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/bt_loginactivity_login"
+        style="@style/Button.Blue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_loginactivity_two"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:gravity="center"
+        android:onClick="onClick"
+        android:text="Login" />
+
+    <com.xuexiang.xui.widget.button.roundbutton.RoundButton
+        android:id="@+id/bt_loginactivity_register"
+        style="@style/RoundButton.Auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bt_loginactivity_login"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:gravity="center"
+        android:onClick="onClick"
+        android:text="Register" />
+</LinearLayout>

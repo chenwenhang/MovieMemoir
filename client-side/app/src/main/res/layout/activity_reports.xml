@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eeeeee"
+    android:orientation="vertical"
+    tools:context=".activity.ReportsActivity">
+
+    <com.xuexiang.xui.widget.actionbar.TitleBar
+        android:id="@+id/reports_title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/xui_config_color_titlebar"
+        app:tb_actionPadding="20dp"
+        app:tb_barHeight="65dp"
+        app:tb_dividerColor="@color/xui_config_color_red"
+        app:tb_sideTextPadding="20dp"
+        app:tb_subTitleText="Hello"
+        app:tb_titleText="Reports" />
+
+</LinearLayout>
