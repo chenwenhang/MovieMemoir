@@ -16,6 +16,7 @@ import com.echo.moviememoir.R;
 import com.echo.moviememoir.adapter.HomeRecyclerViewAdapter;
 import com.echo.moviememoir.entity.Memoir;
 import com.echo.moviememoir.restful.RestClient;
+import com.echo.moviememoir.utils.DateString;
 import com.echo.moviememoir.utils.LocalStorage;
 import com.google.android.material.navigation.NavigationView;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
@@ -91,9 +92,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         titleBar.disableLeftView();
 
         // set data bar
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = new Date(System.currentTimeMillis());
-        dateBar.setCenterString(formatter.format(date));
+        dateBar.setCenterString(DateString.date2String(new Date(System.currentTimeMillis())));
 
         // get top five memoir
         String str = RestClient.findFiveHighestMovieByUserId(LocalStorage.getUser().getUserId());
@@ -104,7 +103,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             for (int i = 0; i < res.length(); i++) {
                 Memoir memoir = new Memoir();
                 memoir.setMovieName((String) res.getJSONObject(i).get("movie_name"));
-                memoir.setMovieReleaseDate(new SimpleDateFormat("yyyy-MM-dd").parse((String) res.getJSONObject(i).get("release_date")));
+                memoir.setMovieReleaseDate(DateString.string2Date((String) res.getJSONObject(i).get("release_date")));
                 memoir.setScore("95");
                 memoirs.add(memoir);
             }

@@ -1,21 +1,45 @@
 package com.echo.moviememoir.entity;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
+
+import com.echo.moviememoir.entity.convert.CinemaTypeConverter;
+import com.echo.moviememoir.entity.convert.CredentialTypeConverter;
+import com.echo.moviememoir.entity.convert.DateTypeConverter;
+
 import java.util.Date;
 
+@Entity
 public class Memoir {
+    @PrimaryKey(autoGenerate = true)
     private Integer memoirId;
+
+    @TypeConverters(CinemaTypeConverter.class)
     private Cinema cinemaId;
+
+    @TypeConverters(CredentialTypeConverter.class)
     private Credential credentialsId;
+
     private String movieName;
+
     private String comment;
+
+    @TypeConverters(DateTypeConverter.class)
     private Date movieReleaseDate;
+
     private String score;
+
+    @TypeConverters(DateTypeConverter.class)
     private Date watchDate;
+
+    private String description;
 
     public Memoir() {
     }
 
-    public Memoir(Integer memoirId, Cinema cinemaId, Credential credentialsId, String movieName, String comment, Date movieReleaseDate, String score, Date watchDate) {
+    public Memoir(Integer memoirId, Cinema cinemaId, Credential credentialsId, String movieName, String comment, Date movieReleaseDate, String score, Date watchDate, String description) {
         this.memoirId = memoirId;
         this.cinemaId = cinemaId;
         this.credentialsId = credentialsId;
@@ -24,6 +48,7 @@ public class Memoir {
         this.movieReleaseDate = movieReleaseDate;
         this.score = score;
         this.watchDate = watchDate;
+        this.description = description;
     }
 
     public Integer getMemoirId() {
@@ -90,6 +115,14 @@ public class Memoir {
         this.watchDate = watchDate;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     @Override
     public String toString() {
         return "Memoir{" +
@@ -100,7 +133,8 @@ public class Memoir {
                 ", comment='" + comment + '\'' +
                 ", movieReleaseDate=" + movieReleaseDate +
                 ", score='" + score + '\'' +
-                ", watchDate='" + watchDate + '\'' +
+                ", watchDate=" + watchDate +
+                ", description='" + description + '\'' +
                 '}';
     }
 }

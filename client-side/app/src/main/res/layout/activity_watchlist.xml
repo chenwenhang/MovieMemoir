@@ -17,7 +17,6 @@
         app:tb_barHeight="65dp"
         app:tb_dividerColor="@color/xui_config_color_red"
         app:tb_sideTextPadding="20dp"
-        app:tb_subTitleText="Hello"
         app:tb_titleText="Watchlist" />
 
 </LinearLayout>

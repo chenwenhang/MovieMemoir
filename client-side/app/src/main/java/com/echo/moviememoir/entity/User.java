@@ -1,6 +1,13 @@
 package com.echo.moviememoir.entity;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+import java.util.Date;
+
+@Entity
 public class User {
+    @PrimaryKey(autoGenerate = true)
     private Integer userId;
     private String name;
     private String surname;
@@ -8,12 +15,12 @@ public class User {
     private String address;
     private String state;
     private String postcode;
-    private String dob;
+    private Date dob;
 
     public User() {
     }
 
-    public User(Integer userId, String name, String surname, boolean gender, String address, String state, String postcode, String dob) {
+    public User(Integer userId, String name, String surname, boolean gender, String address, String state, String postcode, Date dob) {
         this.userId = userId;
         this.name = name;
         this.surname = surname;
@@ -80,11 +87,11 @@ public class User {
         this.postcode = postcode;
     }
 
-    public String getDob() {
+    public Date getDob() {
         return dob;
     }
 
-    public void setDob(String dob) {
+    public void setDob(Date dob) {
         this.dob = dob;
     }
 

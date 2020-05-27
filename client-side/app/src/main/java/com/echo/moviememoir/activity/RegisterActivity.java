@@ -19,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.echo.moviememoir.R;
 import com.echo.moviememoir.entity.Credential;
 import com.echo.moviememoir.entity.User;
+import com.echo.moviememoir.utils.DateString;
 import com.echo.moviememoir.utils.MD5Helper;
 import com.echo.moviememoir.restful.RestClient;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
@@ -26,6 +27,7 @@ import com.xuexiang.xui.widget.actionbar.TitleBar;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.text.ParseException;
 import java.util.Calendar;
 
 
@@ -176,7 +178,11 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     User user = new User();
                     JSONObject credentialsDataJson = new JSONObject();
                     user.setAddress(address);
-                    user.setDob(dob);
+                    try {
+                        user.setDob(DateString.string2Date(dob));
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
                     user.setGender(!"female".equals(gender));
                     user.setName(name);
                     user.setPostcode(postcode);

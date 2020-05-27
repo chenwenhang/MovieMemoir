@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.echo.moviememoir.R;
 import com.echo.moviememoir.entity.Memoir;
+import com.echo.moviememoir.utils.DateString;
 import com.xuexiang.xui.widget.textview.supertextview.SuperTextView;
 
 import java.text.SimpleDateFormat;
@@ -57,11 +58,8 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
     public void onBindViewHolder(@NonNull HomeRecyclerViewAdapter.ViewHolder viewHolder, int position) {
         Memoir memoir = memoirs.get(position);
 
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        String dateString = format.format(memoir.getMovieReleaseDate());
-
         viewHolder.memoirText.setCenterTopString(memoir.getMovieName());
         viewHolder.memoirText.setCenterString(memoir.getScore());
-        viewHolder.memoirText.setCenterBottomString(dateString);
+        viewHolder.memoirText.setCenterBottomString(DateString.date2String(memoir.getMovieReleaseDate()));
     }
 }

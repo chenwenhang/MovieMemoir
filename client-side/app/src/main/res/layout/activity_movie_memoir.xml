@@ -17,7 +17,77 @@
         app:tb_barHeight="65dp"
         app:tb_dividerColor="@color/xui_config_color_red"
         app:tb_sideTextPadding="20dp"
-        app:tb_subTitleText="Hello"
         app:tb_titleText="Movie Memoir" />
+
+    <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
+        android:id="@+id/memoir_movie_name"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp"
+        app:sDividerLineType="both"
+        app:sLeftTextString="Movie Name: " />
+
+    <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
+        android:id="@+id/memoir_description"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="15dp"
+        app:sCenterLines="5"
+        app:sCenterMaxEms="180"
+        app:sCenterViewGravity="left_center"
+        app:sDividerLineType="both" />
+
+    <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
+        android:id="@+id/movie_release_date"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp"
+        app:sDividerLineType="both"
+        app:sLeftTextString="Release Date: " />
+
+    <!--    <com.xuexiang.xui.widget.textview.supertextview.SuperTextView-->
+    <!--        android:id="@+id/memoir_score"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="50dp"-->
+    <!--        android:layout_marginTop="15dp"-->
+    <!--        app:sDividerLineType="both"-->
+    <!--        app:sLeftTextString="Score: " />-->
+
+    <RatingBar
+        android:id="@+id/memoir_star"
+        style="@style/Widget.AppCompat.RatingBar.Indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:rating="5"
+        android:stepSize="0.5" />
+
+    <Button
+        android:id="@+id/memoir_add_watchlist"
+        style="@style/Button.Blue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/memoir_score"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:gravity="center"
+        android:onClick="onClick"
+        android:text="Add to Watchlist" />
+
+    <Button
+        android:id="@+id/memoir_add_memoir"
+        style="@style/Button.Blue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/memoir_watchlist_button"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:gravity="center"
+        android:onClick="onClick"
+        android:text="Add to Memoir" />
 
 </LinearLayout>

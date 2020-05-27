@@ -6,10 +6,10 @@
     android:layout_height="match_parent"
     android:background="#eeeeee"
     android:orientation="vertical"
-    tools:context=".activity.MovieSearchActivity">
+    tools:context=".activity.AddToMemoirActivity">
 
     <com.xuexiang.xui.widget.actionbar.TitleBar
-        android:id="@+id/search_title_bar"
+        android:id="@+id/add_memoir_title_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/xui_config_color_titlebar"
@@ -17,18 +17,6 @@
         app:tb_barHeight="65dp"
         app:tb_dividerColor="@color/xui_config_color_red"
         app:tb_sideTextPadding="20dp"
-        app:tb_titleText="Movie Search" />
-
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/search_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:background="#ffffff" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/search_recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        app:tb_titleText="Add To Memoir" />
 
 </LinearLayout>

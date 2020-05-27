@@ -1,9 +1,18 @@
 package com.echo.moviememoir.entity;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
+
+import com.echo.moviememoir.entity.convert.UserTypeConverter;
+
+@Entity
 public class Credential {
+    @PrimaryKey(autoGenerate = true)
     private Integer credentialsId;
     private String username;
     private String password;
+    @TypeConverters(UserTypeConverter.class)
     private User userId;
 
     public Credential() {

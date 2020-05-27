@@ -1,6 +1,9 @@
 package com.echo.moviememoir.activity;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
@@ -13,8 +16,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.echo.moviememoir.R;
 import com.echo.moviememoir.adapter.SearchRecycleViewAdapter;
+import com.echo.moviememoir.api.TheMovieDBAPI;
 import com.echo.moviememoir.entity.Memoir;
 import com.echo.moviememoir.restful.RestClient;
+import com.echo.moviememoir.utils.DateString;
+import com.echo.moviememoir.utils.LocalStorage;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 
 import org.json.JSONArray;
@@ -56,30 +62,44 @@ public class MovieSearchActivity extends AppCompatActivity implements View.OnCli
         });
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @SuppressLint("StaticFieldLeak")
             @Override
-            public boolean onQueryTextSubmit(String query) {
-                // get results
-                String str = RestClient.findByMovieName(query);
-                JSONArray res = null;
-                List<Memoir> memoirs = new ArrayList<>();
-                try {
-                    res = new JSONArray(str);
-                    for (int i = 0; i < res.length(); i++) {
-                        Memoir memoir = new Memoir();
-                        memoir.setMemoirId((Integer) res.getJSONObject(i).get("memoirId"));
-                        memoir.setMovieName((String) res.getJSONObject(i).get("movieName"));
-                        memoir.setMovieReleaseDate(new SimpleDateFormat("yyyy-MM-dd").parse((String) res.getJSONObject(i).get("movieReleaseDate")));
-                        memoirs.add(memoir);
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+            public boolean onQueryTextSubmit(final String query) {
 
-                adapter = new SearchRecycleViewAdapter(memoirs);
-                recyclerView.addItemDecoration(new DividerItemDecoration(MovieSearchActivity.this, LinearLayoutManager.VERTICAL));
-                recyclerView.setAdapter(adapter);
-                layoutManager = new LinearLayoutManager(MovieSearchActivity.this);
-                recyclerView.setLayoutManager(layoutManager);
+                new AsyncTask<String, Void, String>() {
+                    @Override
+                    protected String doInBackground(String... params) {
+                        return TheMovieDBAPI.searchMovie(query);
+                    }
+
+                    @Override
+                    protected void onPostExecute(String result) {
+                        List<Memoir> memoirs = new ArrayList<>();
+                        JSONArray res = TheMovieDBAPI.getSnippet(result, "results");
+                        try {
+                            for (int i = 0; i < res.length(); i++) {
+                                Memoir memoir = new Memoir();
+                                memoir.setMovieName((String) res.getJSONObject(i).get("title"));
+                                String voteAverage = String.valueOf(res.getJSONObject(i).get("vote_average"));
+                                memoir.setScore(String.valueOf((Double.parseDouble(voteAverage)) * 10));
+                                memoir.setDescription((String) res.getJSONObject(i).get("overview"));
+                                memoir.setMemoirId((Integer) res.getJSONObject(i).get("id"));
+                                if (res.getJSONObject(i).has("release_date") && !((String) res.getJSONObject(i).get("release_date")).equals(""))
+                                    memoir.setMovieReleaseDate(DateString.string2Date((String) res.getJSONObject(i).get("release_date")));
+                                memoirs.add(memoir);
+                            }
+
+                            Context context = getBaseContext();
+                            adapter = new SearchRecycleViewAdapter(memoirs, context);
+                            recyclerView.addItemDecoration(new DividerItemDecoration(MovieSearchActivity.this, LinearLayoutManager.VERTICAL));
+                            recyclerView.setAdapter(adapter);
+                            layoutManager = new LinearLayoutManager(MovieSearchActivity.this);
+                            recyclerView.setLayoutManager(layoutManager);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }.execute();
 
                 return false;
             }

@@ -11,6 +11,8 @@ import com.echo.moviememoir.R;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 
 public class WatchlistActivity extends AppCompatActivity implements View.OnClickListener {
+    // TODO: 5/27/2020 Watchlist need to be written
+
     private TitleBar titleBar;
 
     @Override

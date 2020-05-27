@@ -1,6 +1,11 @@
 package com.echo.moviememoir.entity;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity
 public class Cinema {
+    @PrimaryKey(autoGenerate = true)
     private Integer cinemaId;
     private String cinemaName;
     private String location;

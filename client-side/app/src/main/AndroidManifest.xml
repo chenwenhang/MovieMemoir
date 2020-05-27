@@ -30,6 +30,7 @@
         <activity android:name="com.echo.moviememoir.activity.MovieMemoirActivity" />
         <activity android:name="com.echo.moviememoir.activity.ReportsActivity" />
         <activity android:name="com.echo.moviememoir.activity.WatchlistActivity" />
+        <activity android:name="com.echo.moviememoir.activity.AddToMemoirActivity" />
     </application>
 
     <!--    Prevent gradle build error-->
