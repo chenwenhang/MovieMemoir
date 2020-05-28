@@ -17,4 +17,15 @@ public class DateString {
     public static Date string2Date(String str) throws ParseException {
         return new SimpleDateFormat("yyyy-MM-dd").parse(str);
     }
+
+    public static String dateTime2String(Date dateTime) {
+        @SuppressLint("SimpleDateFormat")
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return format.format(dateTime);
+    }
+
+    @SuppressLint("SimpleDateFormat")
+    public static Date string2DateTime(String str) throws ParseException {
+        return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(str);
+    }
 }

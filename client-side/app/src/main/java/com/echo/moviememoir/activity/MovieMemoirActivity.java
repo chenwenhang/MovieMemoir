@@ -9,7 +9,10 @@ import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.echo.moviememoir.R;
 import com.echo.moviememoir.api.TheMovieDBAPI;
@@ -19,13 +22,14 @@ import com.echo.moviememoir.utils.DateString;
 import com.echo.moviememoir.utils.LocalStorage;
 import com.echo.moviememoir.api.SearchGoogleAPI;
 import com.echo.moviememoir.utils.RatingStar;
+import com.echo.moviememoir.viewmodel.MemoirViewModel;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xui.widget.textview.supertextview.SuperTextView;
 
+import java.util.Date;
 import java.util.List;
 
 public class MovieMemoirActivity extends AppCompatActivity implements View.OnClickListener {
-    MemoirDatabase db = null;
     private TitleBar titleBar;
     private SuperTextView movieName;
     private SuperTextView movieDescription;
@@ -33,6 +37,7 @@ public class MovieMemoirActivity extends AppCompatActivity implements View.OnCli
     private Button addWatchlistBtn;
     private Button addMemoirBtn;
     private RatingBar ratingBar;
+    MemoirViewModel memoirViewModel;
 
 
     @Override
@@ -44,12 +49,13 @@ public class MovieMemoirActivity extends AppCompatActivity implements View.OnCli
         StrictMode.setThreadPolicy(policy);
 
         setContentView(R.layout.activity_movie_memoir);
-        db = MemoirDatabase.getInstance(this);
 
         initView();
     }
 
     private void initView() {
+        memoirViewModel = new ViewModelProvider(this).get(MemoirViewModel.class);
+        memoirViewModel.initalizeVars(getApplication());
         movieName = findViewById(R.id.memoir_movie_name);
         movieDescription = findViewById(R.id.memoir_description);
         movieReleaseDate = findViewById(R.id.movie_release_date);
@@ -79,13 +85,27 @@ public class MovieMemoirActivity extends AppCompatActivity implements View.OnCli
         addWatchlistBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String[] details = new String[]{
-                        "" + memoir.getMemoirId(), memoir.getMovieName()
-                };
-                InsertDatabase insertDatabase = new InsertDatabase();
-                insertDatabase.execute(details);
+                memoir.setAddDateTime(new Date(System.currentTimeMillis()));
+
+                // The findById here is an asynchronous operation and needs to be monitored
+                memoirViewModel.findByID(memoir.getMemoirId()).observe(MovieMemoirActivity.this, new Observer<Memoir>() {
+                    @Override
+                    public void onChanged(@Nullable final Memoir existMemoir) {
+                        if (existMemoir == null) {
+                            memoirViewModel.insert(memoir);
+                            Toast.makeText(MovieMemoirActivity.this, "Add to watchlist success", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(MovieMemoirActivity.this, "Movie has existed", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
             }
         });
+
+        if (getIntent().getStringExtra("disableAdd") != null) {
+            addWatchlistBtn.setEnabled(!(getIntent().getStringExtra("disableAdd")).equals("disable"));
+        }
 
         addMemoirBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,47 +119,5 @@ public class MovieMemoirActivity extends AppCompatActivity implements View.OnCli
 
     public void onClick(View view) {
 
-    }
-
-    private class InsertDatabase extends AsyncTask<String, Void, String> {
-        @Override
-        protected String doInBackground(String... params) {
-            Memoir memoir = new Memoir();
-            memoir.setMemoirId(Integer.parseInt(params[0]));
-            memoir.setMovieName(params[1]);
-            Memoir existMemoir = db.memoirDao().findByID(memoir.getMemoirId());
-            if (existMemoir == null) {
-                long id = db.memoirDao().insert(memoir);
-                return (id + " " + params[0]);
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(String details) {
-            if (details != null)
-                Toast.makeText(MovieMemoirActivity.this, "Add to watchlist success", Toast.LENGTH_SHORT).show();
-            else
-                Toast.makeText(MovieMemoirActivity.this, "Movie has existed", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    private class ReadDatabase extends AsyncTask<Void, Void, String> {
-        @Override
-        protected String doInBackground(Void... params) {
-            List<Memoir> memoirs = db.memoirDao().getAll();
-            if (!memoirs.isEmpty()) {
-                String allMemoirs = "";
-                for (Memoir memoir : memoirs) {
-                    allMemoirs = memoir.getMemoirId() + memoir.getMovieName();
-                }
-                return allMemoirs;
-            } else return "";
-        }
-
-        @Override
-        protected void onPostExecute(String details) {
-            System.out.println(details);
-        }
     }
 }

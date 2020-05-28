@@ -36,10 +36,13 @@ public class Memoir {
 
     private String description;
 
+    @TypeConverters(DateTypeConverter.class)
+    private Date addDateTime;
+
     public Memoir() {
     }
 
-    public Memoir(Integer memoirId, Cinema cinemaId, Credential credentialsId, String movieName, String comment, Date movieReleaseDate, String score, Date watchDate, String description) {
+    public Memoir(Integer memoirId, Cinema cinemaId, Credential credentialsId, String movieName, String comment, Date movieReleaseDate, String score, Date watchDate, String description, Date addDateTime) {
         this.memoirId = memoirId;
         this.cinemaId = cinemaId;
         this.credentialsId = credentialsId;
@@ -49,6 +52,7 @@ public class Memoir {
         this.score = score;
         this.watchDate = watchDate;
         this.description = description;
+        this.addDateTime = addDateTime;
     }
 
     public Integer getMemoirId() {
@@ -123,6 +127,14 @@ public class Memoir {
         this.description = description;
     }
 
+    public Date getAddDateTime() {
+        return addDateTime;
+    }
+
+    public void setAddDateTime(Date addDateTime) {
+        this.addDateTime = addDateTime;
+    }
+
     @Override
     public String toString() {
         return "Memoir{" +
@@ -135,6 +147,7 @@ public class Memoir {
                 ", score='" + score + '\'' +
                 ", watchDate=" + watchDate +
                 ", description='" + description + '\'' +
+                ", addDateTime=" + addDateTime +
                 '}';
     }
 }

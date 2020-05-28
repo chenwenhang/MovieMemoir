@@ -1,5 +1,6 @@
 package com.echo.moviememoir.dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -15,10 +16,10 @@ import static androidx.room.OnConflictStrategy.REPLACE;
 @Dao
 public interface MemoirDao {
     @Query("SELECT * FROM memoir")
-    List<Memoir> getAll();
+    LiveData<List<Memoir>> getAll();
 
     @Query("SELECT * FROM memoir WHERE memoirId = :memoirId LIMIT 1")
-    Memoir findByID(int memoirId);
+    LiveData<Memoir> findByID(int memoirId);
 
     @Insert
     void insertAll(Memoir... memoirs);

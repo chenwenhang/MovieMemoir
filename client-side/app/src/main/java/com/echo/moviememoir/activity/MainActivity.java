@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         user.setUserId(1);
         user.setName("Wenhang");
         LocalStorage.setUser(user);
-        Intent intent = new Intent(this, MovieSearchActivity.class);
+        Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
         finish();
 

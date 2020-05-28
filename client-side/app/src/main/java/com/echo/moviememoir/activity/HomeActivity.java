@@ -88,7 +88,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         });
 
         // set subtitle
-        titleBar.setSubTitle("Hello, " + LocalStorage.getUser().getName());
+        if (LocalStorage.getUser() != null)
+            titleBar.setSubTitle("Hello, " + LocalStorage.getUser().getName());
         titleBar.disableLeftView();
 
         // set data bar
