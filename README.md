@@ -4,7 +4,7 @@ FIT5046 Project including android client-side and restful server-side.
 ## Progress
 
 #### Client-side
-* Task 1-5 has Completed
+* Task 1-6 has Completed
 
 #### Server-side
 * Completed
