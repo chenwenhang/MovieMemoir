@@ -5,26 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.echo.moviememoir.R;
+import com.echo.moviememoir.entity.Credential;
 import com.echo.moviememoir.entity.User;
-import com.echo.moviememoir.restful.RestClient;
 import com.echo.moviememoir.utils.LocalStorage;
-import com.echo.moviememoir.utils.MD5Helper;
-import com.google.gson.Gson;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView mTvLoginactivityRegister;
@@ -67,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         user.setUserId(1);
         user.setName("Wenhang");
         LocalStorage.setUser(user);
-        Intent intent = new Intent(this, HomeActivity.class);
+        Intent intent = new Intent(this, MovieSearchActivity.class);
         startActivity(intent);
         finish();
 

@@ -18,14 +18,11 @@ import com.echo.moviememoir.R;
 import com.echo.moviememoir.adapter.SearchRecycleViewAdapter;
 import com.echo.moviememoir.api.TheMovieDBAPI;
 import com.echo.moviememoir.entity.Memoir;
-import com.echo.moviememoir.restful.RestClient;
-import com.echo.moviememoir.utils.DateString;
-import com.echo.moviememoir.utils.LocalStorage;
+import com.echo.moviememoir.utils.DateStringUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 
 import org.json.JSONArray;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -84,8 +81,15 @@ public class MovieSearchActivity extends AppCompatActivity implements View.OnCli
                                 memoir.setScore(String.valueOf((Double.parseDouble(voteAverage)) * 10));
                                 memoir.setDescription((String) res.getJSONObject(i).get("overview"));
                                 memoir.setMemoirId((Integer) res.getJSONObject(i).get("id"));
+                                if (res.getJSONObject(i).get("poster_path") instanceof String) {
+                                    memoir.setImageUrl((String) res.getJSONObject(i).get("poster_path"));
+                                } else if (res.getJSONObject(i).get("backdrop_path") instanceof String) {
+                                    memoir.setImageUrl((String) res.getJSONObject(i).get("backdrop_path"));
+                                } else {
+                                    memoir.setImageUrl(null);
+                                }
                                 if (res.getJSONObject(i).has("release_date") && !((String) res.getJSONObject(i).get("release_date")).equals(""))
-                                    memoir.setMovieReleaseDate(DateString.string2Date((String) res.getJSONObject(i).get("release_date")));
+                                    memoir.setMovieReleaseDate(DateStringUtils.string2Date((String) res.getJSONObject(i).get("release_date")));
                                 memoirs.add(memoir);
                             }
 

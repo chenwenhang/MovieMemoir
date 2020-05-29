@@ -18,6 +18,10 @@ public class Credential {
     public Credential() {
     }
 
+    public Credential(Integer credentialsId) {
+        this.credentialsId = credentialsId;
+    }
+
     public Credential(Integer credentialsId, String username, String password, User userId) {
         this.credentialsId = credentialsId;
         this.username = username;

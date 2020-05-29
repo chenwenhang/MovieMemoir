@@ -10,24 +10,18 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.echo.moviememoir.R;
 import com.echo.moviememoir.activity.MovieMemoirActivity;
-import com.echo.moviememoir.activity.WatchlistActivity;
 import com.echo.moviememoir.entity.Memoir;
-import com.echo.moviememoir.utils.DateString;
+import com.echo.moviememoir.utils.DateStringUtils;
 import com.echo.moviememoir.utils.LocalStorage;
 import com.echo.moviememoir.viewmodel.MemoirViewModel;
 import com.xuexiang.xui.widget.dialog.DialogLoader;
-import com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog;
 import com.xuexiang.xui.widget.textview.supertextview.SuperTextView;
 
 import java.util.List;
-
-import static com.xuexiang.xui.XUI.getContext;
 
 public class WatchlistRecycleViewAdapter extends RecyclerView.Adapter<WatchlistRecycleViewAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -72,7 +66,7 @@ public class WatchlistRecycleViewAdapter extends RecyclerView.Adapter<WatchlistR
     public WatchlistRecycleViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
-        View unitsView = inflater.inflate(R.layout.watchlist_movie_list, parent, false);
+        View unitsView = inflater.inflate(R.layout.list_watchlist_movie, parent, false);
         WatchlistRecycleViewAdapter.ViewHolder viewHolder = new WatchlistRecycleViewAdapter.ViewHolder(unitsView);
         return viewHolder;
     }
@@ -82,8 +76,8 @@ public class WatchlistRecycleViewAdapter extends RecyclerView.Adapter<WatchlistR
         final Memoir memoir = memoirs.get(position);
 
         viewHolder.memoirText.setCenterTopString(memoir.getMovieName());
-        viewHolder.memoirText.setCenterString(DateString.date2String(memoir.getMovieReleaseDate()));
-        viewHolder.memoirText.setCenterBottomString(DateString.dateTime2String(memoir.getAddDateTime()));
+        viewHolder.memoirText.setCenterString(DateStringUtils.date2String(memoir.getMovieReleaseDate()));
+        viewHolder.memoirText.setCenterBottomString(DateStringUtils.dateTime2String(memoir.getAddDateTime()));
 
         viewHolder.viewBtn.setOnClickListener(new View.OnClickListener() {
             @Override

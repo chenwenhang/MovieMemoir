@@ -14,6 +14,10 @@ public class Cinema {
     public Cinema() {
     }
 
+    public Cinema(Integer cinemaId) {
+        this.cinemaId = cinemaId;
+    }
+
     public Cinema(Integer cinemaId, String cinemaName, String location, String postcode) {
         this.cinemaId = cinemaId;
         this.cinemaName = cinemaName;

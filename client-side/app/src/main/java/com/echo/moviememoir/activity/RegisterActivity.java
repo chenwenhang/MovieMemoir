@@ -19,8 +19,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.echo.moviememoir.R;
 import com.echo.moviememoir.entity.Credential;
 import com.echo.moviememoir.entity.User;
-import com.echo.moviememoir.utils.DateString;
-import com.echo.moviememoir.utils.MD5Helper;
+import com.echo.moviememoir.utils.DateStringUtils;
+import com.echo.moviememoir.utils.MD5Utils;
 import com.echo.moviememoir.restful.RestClient;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 
@@ -102,9 +102,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             }
         });
 
-    }
-
-    public void showDatePickDialog(DatePickerDialog.OnDateSetListener listener, String curDate) {
+    }public void showDatePickDialog(DatePickerDialog.OnDateSetListener listener, String curDate) {
         Calendar calendar = Calendar.getInstance();
         int year = 0, month = 0, day = 0;
         try {
@@ -179,7 +177,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     JSONObject credentialsDataJson = new JSONObject();
                     user.setAddress(address);
                     try {
-                        user.setDob(DateString.string2Date(dob));
+                        user.setDob(DateStringUtils.string2Date(dob));
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }
@@ -196,7 +194,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     credential.setCredentialsId(oldCredentialsId + 1);
                     credential.setUsername(username);
                     try {
-                        credential.setPassword(MD5Helper.getMD5(password));
+                        credential.setPassword(MD5Utils.getMD5(password));
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

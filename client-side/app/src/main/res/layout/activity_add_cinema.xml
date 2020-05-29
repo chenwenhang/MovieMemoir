@@ -6,10 +6,10 @@
     android:layout_height="match_parent"
     android:background="#eeeeee"
     android:orientation="vertical"
-    tools:context=".activity.AddNewMemoirActivity">
+    tools:context=".activity.AddNewCinemaActivity">
 
     <com.xuexiang.xui.widget.actionbar.TitleBar
-        android:id="@+id/add_memoir_title_bar"
+        android:id="@+id/add_cinema_title_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/xui_config_color_titlebar"
@@ -19,22 +19,6 @@
         app:tb_sideTextPadding="20dp"
         app:tb_titleText="Add To Memoir" />
 
-    <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
-        android:id="@+id/add_movie_name"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        app:sDividerLineType="both"
-        app:sLeftTextString="Movie Name: " />
-
-    <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
-        android:id="@+id/add_release_date"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        app:sDividerLineType="both"
-        app:sLeftTextString="Release Date: " />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -47,15 +31,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="Watch Time: "
+            android:text="Cinema Name: "
             android:textColor="@color/xui_config_color_black" />
 
         <com.xuexiang.xui.widget.edittext.materialedittext.MaterialEditText
-            android:id="@+id/add_watch_date_text"
+            android:id="@+id/add_cinema_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
-            android:hint="Watch Time" />
+            android:hint="Cinema Name" />
     </LinearLayout>
 
     <LinearLayout
@@ -70,19 +54,42 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="Cinema: "
+            android:text="Location: "
             android:textColor="@color/xui_config_color_black" />
 
-        <com.xuexiang.xui.widget.spinner.materialspinner.MaterialSpinner
-            android:id="@+id/add_watch_cinema_text"
-            style="@style/Material.SpinnerStyle"
+        <com.xuexiang.xui.widget.edittext.materialedittext.MaterialEditText
+            android:id="@+id/add_cinema_location"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp" />
+            android:layout_marginRight="10dp"
+            android:hint="Location" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/xui_config_color_white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Postcode: "
+            android:textColor="@color/xui_config_color_black" />
+
+        <com.xuexiang.xui.widget.edittext.materialedittext.MaterialEditText
+            android:id="@+id/add_cinema_postcode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:hint="Postcode" />
     </LinearLayout>
 
     <Button
-        android:id="@+id/add_new_cinema"
+        android:id="@+id/add_cinema_button"
         style="@style/Button.Blue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -92,53 +99,6 @@
         android:layout_marginRight="5dp"
         android:gravity="center"
         android:onClick="onClick"
-        android:text="Add new cinema" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/xui_config_color_white"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="Comment: "
-            android:textColor="@color/xui_config_color_black" />
-
-        <com.xuexiang.xui.widget.edittext.materialedittext.MaterialEditText
-            android:id="@+id/add_watch_comment_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:hint="Comment" />
-    </LinearLayout>
-
-    <RatingBar
-        android:id="@+id/add_memoir_star"
-        style="@style/Widget.AppCompat.RatingBar.Indicator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:isIndicator="false"
-        android:numStars="5"
-        android:rating="5"
-        android:stepSize="0.5" />
-
-    <Button
-        android:id="@+id/add_memoir_button"
-        style="@style/Button.Blue"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/add_memoir_star"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="5dp"
-        android:gravity="center"
-        android:onClick="onClick"
-        android:text="Add new memoir" />
+        android:text="Add Cinema" />
 
 </LinearLayout>

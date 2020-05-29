@@ -8,7 +8,7 @@ import java.net.URL;
 import java.util.Scanner;
 
 public class TheMovieDBAPI {
-    private static final String API_KEY = "YOUR API_KEY";
+    private static final String API_KEY = "633dbace2cfb20367af42c7c411d05b4";
 
 
     // search movie

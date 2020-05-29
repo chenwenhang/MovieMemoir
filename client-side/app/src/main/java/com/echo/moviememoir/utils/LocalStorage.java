@@ -1,5 +1,6 @@
 package com.echo.moviememoir.utils;
 
+import com.echo.moviememoir.entity.Credential;
 import com.echo.moviememoir.entity.Memoir;
 import com.echo.moviememoir.entity.User;
 

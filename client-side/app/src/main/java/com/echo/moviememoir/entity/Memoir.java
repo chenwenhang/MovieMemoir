@@ -8,6 +8,7 @@ import androidx.room.TypeConverters;
 import com.echo.moviememoir.entity.convert.CinemaTypeConverter;
 import com.echo.moviememoir.entity.convert.CredentialTypeConverter;
 import com.echo.moviememoir.entity.convert.DateTypeConverter;
+import com.google.gson.annotations.Expose;
 
 import java.util.Date;
 
@@ -34,15 +35,20 @@ public class Memoir {
     @TypeConverters(DateTypeConverter.class)
     private Date watchDate;
 
+    @Expose(serialize = false, deserialize = false)
     private String description;
 
+    @Expose(serialize = false, deserialize = false)
     @TypeConverters(DateTypeConverter.class)
     private Date addDateTime;
+
+    @Expose(serialize = false, deserialize = false)
+    private String imageUrl;
 
     public Memoir() {
     }
 
-    public Memoir(Integer memoirId, Cinema cinemaId, Credential credentialsId, String movieName, String comment, Date movieReleaseDate, String score, Date watchDate, String description, Date addDateTime) {
+    public Memoir(Integer memoirId, Cinema cinemaId, Credential credentialsId, String movieName, String comment, Date movieReleaseDate, String score, Date watchDate, String description, Date addDateTime, String imageUrl) {
         this.memoirId = memoirId;
         this.cinemaId = cinemaId;
         this.credentialsId = credentialsId;
@@ -53,6 +59,7 @@ public class Memoir {
         this.watchDate = watchDate;
         this.description = description;
         this.addDateTime = addDateTime;
+        this.imageUrl = imageUrl;
     }
 
     public Integer getMemoirId() {
@@ -135,6 +142,14 @@ public class Memoir {
         this.addDateTime = addDateTime;
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
     @Override
     public String toString() {
         return "Memoir{" +
@@ -148,6 +163,7 @@ public class Memoir {
                 ", watchDate=" + watchDate +
                 ", description='" + description + '\'' +
                 ", addDateTime=" + addDateTime +
+                ", imageUrl='" + imageUrl + '\'' +
                 '}';
     }
 }

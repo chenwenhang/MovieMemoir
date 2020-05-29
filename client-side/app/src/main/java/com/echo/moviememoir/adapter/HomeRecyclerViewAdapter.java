@@ -10,10 +10,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.echo.moviememoir.R;
 import com.echo.moviememoir.entity.Memoir;
-import com.echo.moviememoir.utils.DateString;
+import com.echo.moviememoir.utils.DateStringUtils;
 import com.xuexiang.xui.widget.textview.supertextview.SuperTextView;
 
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerViewAdapter.ViewHolder> {
@@ -49,7 +48,7 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
     public HomeRecyclerViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
-        View unitsView = inflater.inflate(R.layout.home_movie_list, parent, false);
+        View unitsView = inflater.inflate(R.layout.list_home_movie, parent, false);
         ViewHolder viewHolder = new ViewHolder(unitsView);
         return viewHolder;
     }
@@ -60,6 +59,6 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
 
         viewHolder.memoirText.setCenterTopString(memoir.getMovieName());
         viewHolder.memoirText.setCenterString(memoir.getScore());
-        viewHolder.memoirText.setCenterBottomString(DateString.date2String(memoir.getMovieReleaseDate()));
+        viewHolder.memoirText.setCenterBottomString(DateStringUtils.date2String(memoir.getMovieReleaseDate()));
     }
 }

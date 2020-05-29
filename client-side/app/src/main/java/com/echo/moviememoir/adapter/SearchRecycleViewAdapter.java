@@ -1,5 +1,6 @@
 package com.echo.moviememoir.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -11,13 +12,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.echo.moviememoir.R;
 import com.echo.moviememoir.activity.MovieMemoirActivity;
-import com.echo.moviememoir.activity.MovieSearchActivity;
 import com.echo.moviememoir.entity.Memoir;
-import com.echo.moviememoir.utils.DateString;
+import com.echo.moviememoir.utils.DateStringUtils;
 import com.echo.moviememoir.utils.LocalStorage;
 import com.xuexiang.xui.widget.textview.supertextview.SuperTextView;
 
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class SearchRecycleViewAdapter extends RecyclerView.Adapter<SearchRecycleViewAdapter.ViewHolder> {
@@ -55,19 +54,15 @@ public class SearchRecycleViewAdapter extends RecyclerView.Adapter<SearchRecycle
     public SearchRecycleViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
-        View unitsView = inflater.inflate(R.layout.search_movie_list, parent, false);
+        View unitsView = inflater.inflate(R.layout.list_search_movie, parent, false);
         ViewHolder viewHolder = new ViewHolder(unitsView);
         return viewHolder;
     }
 
+    @SuppressLint("StaticFieldLeak")
     @Override
-    public void onBindViewHolder(@NonNull SearchRecycleViewAdapter.ViewHolder viewHolder, int position) {
+    public void onBindViewHolder(@NonNull final SearchRecycleViewAdapter.ViewHolder viewHolder, int position) {
         final Memoir memoir = memoirs.get(position);
-        
-        if (memoir.getMovieReleaseDate() != null) {
-            viewHolder.memoirText.setCenterBottomString(DateString.date2String(memoir.getMovieReleaseDate()));
-        }
-
         viewHolder.memoirText.setCenterTopString(memoir.getMovieName());
 
         viewHolder.memoirText.setOnClickListener(new View.OnClickListener() {
@@ -79,6 +74,30 @@ public class SearchRecycleViewAdapter extends RecyclerView.Adapter<SearchRecycle
                 context.startActivity(intent);
             }
         });
+        if (memoir.getMovieReleaseDate() != null) {
+            viewHolder.memoirText.setCenterBottomString(DateStringUtils.date2String(memoir.getMovieReleaseDate()));
+        }
+
+        // get image
+//        if (memoir.getImageUrl() != null) {
+//            viewHolder.memoirText.setRightIcon(ImgHelper.getDrawableFormBitmap(context, ImageAPI.getImage(memoir.getImageUrl())));
+//            new AsyncTask<String, Void, Bitmap>() {
+//                @Override
+//                protected Bitmap doInBackground(String... params) {
+//                    Bitmap bitmap = null;
+//                    String imageUrl = memoir.getImageUrl();
+//                    bitmap = ImageAPI.getImage(imageUrl);
+//                    return bitmap;
+//                }
+//
+//                @Override
+//                protected void onPostExecute(Bitmap bitmap) {
+//                    viewHolder.memoirText.setRightIcon(ImgHelper.getDrawableFormBitmap(context, bitmap));
+//                }
+//            }.execute();
+//        }
+
+
     }
 
 }

@@ -1,7 +1,6 @@
 package com.echo.moviememoir.activity;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
@@ -15,19 +14,15 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.echo.moviememoir.R;
-import com.echo.moviememoir.api.TheMovieDBAPI;
-import com.echo.moviememoir.database.MemoirDatabase;
 import com.echo.moviememoir.entity.Memoir;
-import com.echo.moviememoir.utils.DateString;
+import com.echo.moviememoir.utils.DateStringUtils;
 import com.echo.moviememoir.utils.LocalStorage;
-import com.echo.moviememoir.api.SearchGoogleAPI;
-import com.echo.moviememoir.utils.RatingStar;
+import com.echo.moviememoir.utils.RatingStarUtils;
 import com.echo.moviememoir.viewmodel.MemoirViewModel;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xui.widget.textview.supertextview.SuperTextView;
 
 import java.util.Date;
-import java.util.List;
 
 public class MovieMemoirActivity extends AppCompatActivity implements View.OnClickListener {
     private TitleBar titleBar;
@@ -78,9 +73,9 @@ public class MovieMemoirActivity extends AppCompatActivity implements View.OnCli
 
         movieDescription.setCenterString(memoir.getDescription());
         movieName.setCenterString(memoir.getMovieName());
-        movieReleaseDate.setCenterString(DateString.date2String(memoir.getMovieReleaseDate()));
+        movieReleaseDate.setCenterString(DateStringUtils.date2String(memoir.getMovieReleaseDate()));
 
-        ratingBar.setRating(RatingStar.rating2Star(memoir.getScore()));
+        ratingBar.setRating(RatingStarUtils.rating2Star(memoir.getScore()));
 
         addWatchlistBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,7 +105,7 @@ public class MovieMemoirActivity extends AppCompatActivity implements View.OnCli
         addMemoirBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MovieMemoirActivity.this, AddToMemoirActivity.class);
+                Intent intent = new Intent(MovieMemoirActivity.this, AddNewMemoirActivity.class);
                 startActivity(intent);
             }
         });

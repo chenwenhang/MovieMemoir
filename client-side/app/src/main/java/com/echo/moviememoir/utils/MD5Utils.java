@@ -3,7 +3,7 @@ package com.echo.moviememoir.utils;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 
-public class MD5Helper {
+public class MD5Utils {
     public static String getMD5(String str) throws Exception {
         try {
             // 生成一个MD5加密计算摘要

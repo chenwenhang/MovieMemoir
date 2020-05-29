@@ -1,6 +1,34 @@
 package com.echo.moviememoir.utils;
 
-public class RatingStar {
+public class RatingStarUtils {
+    public static String star2Rating(float score) {
+        float rating = 0;
+        if (score == 0) {
+            rating = 0f;
+        } else if (score == 0.5) {
+            rating = 14;
+        } else if (score == 1) {
+            rating = 23;
+        } else if (score == 1.5) {
+            rating = 32;
+        } else if (score == 2) {
+            rating = 41;
+        } else if (score == 2.5) {
+            rating = 50;
+        } else if (score == 3) {
+            rating = 59;
+        } else if (score == 3.5) {
+            rating = 68;
+        } else if (score == 4) {
+            rating = 77;
+        } else if (score == 4.5) {
+            rating = 86;
+        } else if (score == 5) {
+            rating = 95;
+        }
+        return String.valueOf(rating);
+    }
+
     public static float rating2Star(String rating) {
         float score = Float.parseFloat(rating);
         float star = 0;

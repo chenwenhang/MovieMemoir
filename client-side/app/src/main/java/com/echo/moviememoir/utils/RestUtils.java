@@ -45,7 +45,7 @@ public class RestUtils {
         try {
             Gson gson = new Gson();
             String stringCourseJson = gson.toJson(jsonObj);
-//            System.out.println(stringCourseJson);
+            System.out.println(stringCourseJson);
             url = new URL(BASE_URL + methodPath);
             conn = (HttpURLConnection) url.openConnection();
             conn.setReadTimeout(10000);

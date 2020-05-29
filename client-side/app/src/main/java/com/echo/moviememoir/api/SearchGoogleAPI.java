@@ -8,8 +8,8 @@ import java.net.URL;
 import java.util.Scanner;
 
 public class SearchGoogleAPI {
-    private static final String API_KEY = "YOUR API_KEY";
-    private static final String SEARCH_ID_cx = "YOUR SEARCH_ID_cx";
+    private static final String API_KEY = "AIzaSyD83RbabbdhoxvhFbfgrGR-XUNQHukqCqw";
+    private static final String SEARCH_ID_cx = "002446578222060567927:5j7ysgartzi";
 
     public static String search(String keyword, String[] params, String[] values) {
         keyword = keyword.replace(" ", "+");
