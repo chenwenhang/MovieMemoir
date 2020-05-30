@@ -26,7 +26,7 @@ public class RatingStarUtils {
         } else if (score == 5) {
             rating = 95;
         }
-        return String.valueOf(rating);
+        return String.valueOf((int) rating);
     }
 
     public static float rating2Star(String rating) {

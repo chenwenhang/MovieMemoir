@@ -27,11 +27,12 @@
         <activity android:name="com.echo.moviememoir.activity.HomeActivity" />
         <activity android:name="com.echo.moviememoir.activity.MovieSearchActivity" />
         <activity android:name="com.echo.moviememoir.activity.MapsActivity" />
-        <activity android:name="com.echo.moviememoir.activity.MovieMemoirActivity" />
+        <activity android:name="com.echo.moviememoir.activity.MovieDetailActivity" />
         <activity android:name="com.echo.moviememoir.activity.ReportsActivity" />
         <activity android:name="com.echo.moviememoir.activity.WatchlistActivity" />
         <activity android:name="com.echo.moviememoir.activity.AddNewMemoirActivity" />
         <activity android:name="com.echo.moviememoir.activity.AddNewCinemaActivity" />
+        <activity android:name="com.echo.moviememoir.activity.MovieMemoirActivity" />
     </application>
 
     <!--    Prevent gradle build error-->

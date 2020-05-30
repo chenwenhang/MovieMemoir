@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/moviememoir_box"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="25dp"
+    android:background="@color/xui_config_color_white"
+    android:orientation="vertical">
+
+    <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
+        android:id="@+id/moviememoir_movie_name"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorAccent"
+        app:sDividerLineType="both"
+        app:sLeftTextString="Movie Name: " />
+
+    <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
+        android:id="@+id/moviememoir_movie_release_date"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="3dp"
+        android:background="@color/colorAccent"
+        app:sDividerLineType="both"
+        app:sLeftTextString="Release Date: " />
+
+    <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
+        android:id="@+id/moviememoir_movie_watch_date"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="3dp"
+        android:background="@color/colorAccent"
+        app:sDividerLineType="both"
+        app:sLeftTextString="Watch Date: " />
+
+    <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
+        android:id="@+id/moviememoir_movie_cinema"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="3dp"
+        android:background="@color/colorAccent"
+        app:sDividerLineType="both"
+        app:sLeftTextString="Cinema: " />
+
+    <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
+        android:id="@+id/moviememoir_movie_comment"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="3dp"
+        android:background="@color/colorAccent"
+        app:sDividerLineType="both"
+        app:sLeftTextString="Comment: " />
+
+    <RatingBar
+        android:id="@+id/moviememoir_movie_star"
+        style="@style/Widget.AppCompat.RatingBar.Indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:rating="5"
+        android:layout_marginBottom="10dp"
+        android:stepSize="0.5" />
+
+</LinearLayout>

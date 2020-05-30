@@ -79,7 +79,7 @@ public class AddNewMemoirActivity extends AppCompatActivity implements View.OnCl
         titleBar.setLeftClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AddNewMemoirActivity.this, MovieMemoirActivity.class);
+                Intent intent = new Intent(AddNewMemoirActivity.this, MovieDetailActivity.class);
                 startActivity(intent);
                 finish();
             }

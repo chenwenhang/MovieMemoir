@@ -6,10 +6,10 @@
     android:layout_height="match_parent"
     android:background="#eeeeee"
     android:orientation="vertical"
-    tools:context=".activity.MovieMemoirActivity">
+    tools:context=".activity.WatchlistActivity">
 
     <com.xuexiang.xui.widget.actionbar.TitleBar
-        android:id="@+id/memoir_title_bar"
+        android:id="@+id/moviememoir_title_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/xui_config_color_titlebar"
@@ -17,77 +17,28 @@
         app:tb_barHeight="65dp"
         app:tb_dividerColor="@color/xui_config_color_red"
         app:tb_sideTextPadding="20dp"
-        app:tb_titleText="Movie Memoir" />
+        app:tb_titleText="Watchlist" />
 
-    <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
-        android:id="@+id/memoir_movie_name"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="15dp"
-        app:sDividerLineType="both"
-        app:sLeftTextString="Movie Name: " />
-
-    <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
-        android:id="@+id/memoir_description"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_marginTop="15dp"
-        app:sCenterLines="5"
-        app:sCenterMaxEms="180"
-        app:sCenterViewGravity="left_center"
-        app:sDividerLineType="both" />
-
-    <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
-        android:id="@+id/movie_release_date"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="15dp"
-        app:sDividerLineType="both"
-        app:sLeftTextString="Release Date: " />
-
-    <!--    <com.xuexiang.xui.widget.textview.supertextview.SuperTextView-->
-    <!--        android:id="@+id/memoir_score"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="50dp"-->
-    <!--        android:layout_marginTop="15dp"-->
-    <!--        app:sDividerLineType="both"-->
-    <!--        app:sLeftTextString="Score: " />-->
-
-    <RatingBar
-        android:id="@+id/memoir_star"
-        style="@style/Widget.AppCompat.RatingBar.Indicator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:isIndicator="true"
-        android:numStars="5"
-        android:rating="5"
-        android:stepSize="0.5" />
-
-    <Button
-        android:id="@+id/memoir_add_watchlist"
-        style="@style/Button.Blue"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/memoir_score"
-        android:layout_marginLeft="5dp"
         android:layout_marginTop="10dp"
-        android:layout_marginRight="5dp"
-        android:gravity="center"
-        android:onClick="onClick"
-        android:text="Add to Watchlist" />
+        android:background="@color/xui_config_color_white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/memoir_add_memoir"
-        style="@style/Button.Blue"
+        <com.xuexiang.xui.widget.spinner.materialspinner.MaterialSpinner
+            android:id="@+id/moviememoir_spinner"
+            style="@style/Material.SpinnerStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/moviememoir_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/memoir_watchlist_button"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginRight="5dp"
-        android:gravity="center"
-        android:onClick="onClick"
-        android:text="Add to Memoir" />
+        android:layout_height="match_parent" />
 
 </LinearLayout>

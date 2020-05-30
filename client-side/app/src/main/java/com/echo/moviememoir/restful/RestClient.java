@@ -56,11 +56,20 @@ public class RestClient {
     }
 
     // memoir
+    public static String findNumPerMonthByUserIdYear(Integer credentialsId, String year) {
+        final String methodPath = "ent.memoir/findNumPerMonthByUserIdYear/"
+                + credentialsId + "/" + year;
+        return RestUtils.getData(methodPath);
+    }
+
+    public static String findNumByUserIdDuringPeriod(Integer credentialsId, String startDate, String endDate) {
+        final String methodPath = "ent.memoir/findNumByUserIdDuringPeriod/"
+                + credentialsId + "/" + startDate + "/" + endDate;
+        return RestUtils.getData(methodPath);
+    }
+
     public static void createMemoir(Memoir memoir) {
         final String methodPath = "ent.memoir";
-        memoir.setImageUrl(null);
-        memoir.setAddDateTime(null);
-        memoir.setDescription(null);
         RestUtils.postData(methodPath, memoir);
     }
 

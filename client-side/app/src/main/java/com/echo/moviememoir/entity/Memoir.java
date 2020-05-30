@@ -35,14 +35,11 @@ public class Memoir {
     @TypeConverters(DateTypeConverter.class)
     private Date watchDate;
 
-    @Expose(serialize = false, deserialize = false)
     private String description;
 
-    @Expose(serialize = false, deserialize = false)
     @TypeConverters(DateTypeConverter.class)
     private Date addDateTime;
 
-    @Expose(serialize = false, deserialize = false)
     private String imageUrl;
 
     public Memoir() {

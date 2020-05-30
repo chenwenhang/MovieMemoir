@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.echo.moviememoir.R;
-import com.echo.moviememoir.activity.MovieMemoirActivity;
+import com.echo.moviememoir.activity.MovieDetailActivity;
 import com.echo.moviememoir.entity.Memoir;
 import com.echo.moviememoir.utils.DateStringUtils;
 import com.echo.moviememoir.utils.LocalStorage;
@@ -83,7 +83,7 @@ public class WatchlistRecycleViewAdapter extends RecyclerView.Adapter<WatchlistR
             @Override
             public void onClick(View v) {
                 LocalStorage.setMemoir(memoir);
-                Intent intent = new Intent(context, MovieMemoirActivity.class);
+                Intent intent = new Intent(context, MovieDetailActivity.class);
                 intent.putExtra("disableAdd", "disable");
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);

@@ -1,10 +1,12 @@
 package com.echo.moviememoir.utils;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Date;
 import java.util.Scanner;
 
 public class RestUtils {
@@ -44,7 +46,7 @@ public class RestUtils {
         String textResult = "";
         try {
             Gson gson = new Gson();
-            String stringCourseJson = gson.toJson(jsonObj);
+            String stringCourseJson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create().toJson(jsonObj);
             System.out.println(stringCourseJson);
             url = new URL(BASE_URL + methodPath);
             conn = (HttpURLConnection) url.openConnection();
