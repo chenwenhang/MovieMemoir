@@ -3,6 +3,8 @@ package com.echo.moviememoir.adapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +14,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.echo.moviememoir.R;
 import com.echo.moviememoir.activity.MovieDetailActivity;
+import com.echo.moviememoir.api.ImageAPI;
 import com.echo.moviememoir.entity.Memoir;
 import com.echo.moviememoir.utils.DateStringUtils;
+import com.echo.moviememoir.utils.ImgUtils;
 import com.echo.moviememoir.utils.LocalStorage;
 import com.xuexiang.xui.widget.textview.supertextview.SuperTextView;
 
@@ -79,23 +83,23 @@ public class SearchRecycleViewAdapter extends RecyclerView.Adapter<SearchRecycle
         }
 
         // get image
-//        if (memoir.getImageUrl() != null) {
-//            viewHolder.memoirText.setRightIcon(ImgHelper.getDrawableFormBitmap(context, ImageAPI.getImage(memoir.getImageUrl())));
-//            new AsyncTask<String, Void, Bitmap>() {
-//                @Override
-//                protected Bitmap doInBackground(String... params) {
-//                    Bitmap bitmap = null;
-//                    String imageUrl = memoir.getImageUrl();
-//                    bitmap = ImageAPI.getImage(imageUrl);
-//                    return bitmap;
-//                }
-//
-//                @Override
-//                protected void onPostExecute(Bitmap bitmap) {
-//                    viewHolder.memoirText.setRightIcon(ImgHelper.getDrawableFormBitmap(context, bitmap));
-//                }
-//            }.execute();
-//        }
+        if (memoir.getImageUrl() != null) {
+            viewHolder.memoirText.setRightIcon(ImgUtils.getDrawableFormBitmap(context, ImageAPI.getImage(memoir.getImageUrl())));
+            new AsyncTask<String, Void, Bitmap>() {
+                @Override
+                protected Bitmap doInBackground(String... params) {
+                    Bitmap bitmap = null;
+                    String imageUrl = memoir.getImageUrl();
+                    bitmap = ImageAPI.getImage(imageUrl);
+                    return bitmap;
+                }
+
+                @Override
+                protected void onPostExecute(Bitmap bitmap) {
+                    viewHolder.memoirText.setRightIcon(ImgUtils.getDrawableFormBitmap(context, bitmap));
+                }
+            }.execute();
+        }
 
 
     }

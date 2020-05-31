@@ -5,18 +5,26 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.echo.moviememoir.R;
-import com.echo.moviememoir.entity.Credential;
 import com.echo.moviememoir.entity.User;
+import com.echo.moviememoir.restful.RestClient;
 import com.echo.moviememoir.utils.LocalStorage;
+import com.echo.moviememoir.utils.MD5Utils;
+import com.google.gson.Gson;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView mTvLoginactivityRegister;
@@ -55,65 +63,65 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void onClick(View view) {
-        User user = new User();
-        user.setUserId(1);
-        user.setName("Wenhang");
-        LocalStorage.setUser(user);
-        Intent intent = new Intent(this, ReportsActivity.class);
-        startActivity(intent);
-        finish();
+//        User user = new User();
+//        user.setUserId(1);
+//        user.setAddress("4487 St George");
+//        user.setPostcode("2196");
+//        user.setName("Wenhang");
+//        LocalStorage.setUser(user);
+//        Intent intent = new Intent(this, MovieSearchActivity.class);
+//        startActivity(intent);
 
 
-//        switch (view.getId()) {
-//            // Jump to the registration interface
-//            case R.id.bt_loginactivity_register:
-//                startActivity(new Intent(this, RegisterActivity.class));
-//                finish();
-//                break;
-//
-//            case R.id.bt_loginactivity_login:
-//                String name = mEtLoginactivityUsername.getText().toString().trim();
-//                String password = mEtLoginactivityPassword.getText().toString().trim();
-//                if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(password)) {
-//                    boolean match = false;
-//                    String str = RestClient.findByUsername(name);
-//                    JSONArray res = null;
-//                    String pwd_server = "";
-//                    String name_server = "";
-//                    try {
-//                        res = new JSONArray(str);
-//                        password = MD5Helper.getMD5(password);
-//                        pwd_server = (String) (res.getJSONObject(0).get("password"));
-//                        name_server = (String) (res.getJSONObject(0).get("username"));
-//                    } catch (Exception e) {
-//                        e.printStackTrace();
-//                    }
-//                    match = name.equals(name_server) && password.equals(pwd_server);
-//                    if (match) {
-//                        Toast.makeText(this, "Login success", Toast.LENGTH_SHORT).show();
-//
-//                        // get user's name
-//                        try {
-//                            assert res != null;
-//                            Gson gson = new Gson();
-//                            JSONObject json = (JSONObject) res.getJSONObject(0).get("userId");
-//                            String jsonString = RestClient.findByUserId((Integer) json.get("userId"));
-//                            User obj = gson.fromJson(jsonString, User.class);
-//                            LocalStorage.setUser(obj);
-//                        } catch (JSONException e) {
-//                            e.printStackTrace();
-//                        }
-//
-//                        Intent intent = new Intent(this, HomeActivity.class);
-//                        startActivity(intent);
-//                        finish();
-//                    } else {
-//                        Toast.makeText(this, "Username or password is incorrect, please re-enter", Toast.LENGTH_SHORT).show();
-//                    }
-//                } else {
-//                    Toast.makeText(this, "Please enter your username or password", Toast.LENGTH_SHORT).show();
-//                }
-//                break;
-//        }
+        switch (view.getId()) {
+            // Jump to the registration interface
+            case R.id.bt_loginactivity_register:
+                startActivity(new Intent(this, RegisterActivity.class));
+                finish();
+                break;
+
+            case R.id.bt_loginactivity_login:
+                String name = mEtLoginactivityUsername.getText().toString().trim();
+                String password = mEtLoginactivityPassword.getText().toString().trim();
+                if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(password)) {
+                    boolean match = false;
+                    String str = RestClient.findByUsername(name);
+                    JSONArray res = null;
+                    String pwd_server = "";
+                    String name_server = "";
+                    try {
+                        res = new JSONArray(str);
+                        password = MD5Utils.getMD5(password);
+                        pwd_server = (String) (res.getJSONObject(0).get("password"));
+                        name_server = (String) (res.getJSONObject(0).get("username"));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    match = name.equals(name_server) && password.equals(pwd_server);
+                    if (match) {
+                        Toast.makeText(this, "Login success", Toast.LENGTH_SHORT).show();
+
+                        // get user's name
+                        try {
+                            assert res != null;
+                            Gson gson = new Gson();
+                            JSONObject json = (JSONObject) res.getJSONObject(0).get("userId");
+                            String jsonString = RestClient.findByUserId((Integer) json.get("userId"));
+                            User obj = gson.fromJson(jsonString, User.class);
+                            LocalStorage.setUser(obj);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                        Intent intent = new Intent(this, HomeActivity.class);
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(this, "Username or password is incorrect, please re-enter", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(this, "Please enter your username or password", Toast.LENGTH_SHORT).show();
+                }
+                break;
+        }
     }
 }

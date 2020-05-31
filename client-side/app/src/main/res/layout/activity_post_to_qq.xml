@@ -9,7 +9,7 @@
     tools:context="com.echo.moviememoir.activity.MapsActivity">
 
     <com.xuexiang.xui.widget.actionbar.TitleBar
-        android:id="@+id/maps_title_bar"
+        android:id="@+id/post_title_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/xui_config_color_titlebar"
@@ -17,11 +17,10 @@
         app:tb_barHeight="65dp"
         app:tb_dividerColor="@color/xui_config_color_red"
         app:tb_sideTextPadding="20dp"
-        app:tb_titleText="Maps" />
+        app:tb_titleText="Post to qq zone" />
 
-    <fragment
-        android:id="@+id/map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
+    <WebView
+        android:id="@+id/post_webview"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

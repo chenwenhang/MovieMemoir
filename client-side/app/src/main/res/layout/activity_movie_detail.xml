@@ -90,4 +90,17 @@
         android:onClick="onClick"
         android:text="Add to Memoir" />
 
+    <Button
+        android:id="@+id/memoir_post_qq"
+        style="@style/Button.Blue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/memoir_watchlist_button"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:gravity="center"
+        android:onClick="onClick"
+        android:text="Post to QQ Zone" />
+
 </LinearLayout>

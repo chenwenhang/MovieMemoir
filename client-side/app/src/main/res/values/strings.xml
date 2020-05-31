@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Movie Memoir</string>
+    <string name="title_activity_maps2">Map</string>
+    <string name="title_activity_maps_content">Map</string>
 </resources>

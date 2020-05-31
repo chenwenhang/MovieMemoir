@@ -17,7 +17,7 @@
         app:tb_barHeight="65dp"
         app:tb_dividerColor="@color/xui_config_color_red"
         app:tb_sideTextPadding="20dp"
-        app:tb_titleText="Add To Memoir" />
+        app:tb_titleText="Add New Cinema" />
 
     <LinearLayout
         android:layout_width="match_parent"

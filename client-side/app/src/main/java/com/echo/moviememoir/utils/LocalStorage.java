@@ -7,6 +7,7 @@ import com.echo.moviememoir.entity.User;
 public class LocalStorage {
     public static User user;
     public static Memoir memoir;
+    public static String postUrl;
     public static boolean canAddToWatchlist;
 
     public static User getUser() {
@@ -31,5 +32,13 @@ public class LocalStorage {
 
     public static void setCanAddToWatchlist(boolean canAddToWatchlist) {
         LocalStorage.canAddToWatchlist = canAddToWatchlist;
+    }
+
+    public static String getPostUrl() {
+        return postUrl;
+    }
+
+    public static void setPostUrl(String postUrl) {
+        LocalStorage.postUrl = postUrl;
     }
 }

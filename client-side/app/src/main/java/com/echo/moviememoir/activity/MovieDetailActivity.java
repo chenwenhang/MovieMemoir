@@ -1,6 +1,7 @@
 package com.echo.moviememoir.activity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
@@ -31,6 +32,7 @@ public class MovieDetailActivity extends AppCompatActivity implements View.OnCli
     private SuperTextView movieReleaseDate;
     private Button addWatchlistBtn;
     private Button addMemoirBtn;
+    private Button postToQQZone;
     private RatingBar ratingBar;
     MemoirViewModel memoirViewModel;
 
@@ -58,6 +60,7 @@ public class MovieDetailActivity extends AppCompatActivity implements View.OnCli
         ratingBar = findViewById(R.id.memoir_star);
         addWatchlistBtn = findViewById(R.id.memoir_add_watchlist);
         addMemoirBtn = findViewById(R.id.memoir_add_memoir);
+        postToQQZone = findViewById(R.id.memoir_post_qq);
 
         titleBar.setLeftClickListener(new View.OnClickListener() {
             @Override
@@ -106,6 +109,19 @@ public class MovieDetailActivity extends AppCompatActivity implements View.OnCli
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MovieDetailActivity.this, AddNewMemoirActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        postToQQZone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String title = memoir.getMovieName();
+                String summary = memoir.getMovieName() + " " + memoir.getDescription() + " I love this movie very much!";
+                String url = "https://h5.qzone.qq.com/q/qzs/open/connect/widget/mobile/qzshare/index.html?page=qzshare.html&loginpage=loginindex.html&logintype=qzone&url=movieMemoir.com&sharesource=qzone&title="
+                        + title + "&summary=" + summary;
+                LocalStorage.setPostUrl(url);
+                Intent intent = new Intent(MovieDetailActivity.this, PostToQQZoneActivity.class);
                 startActivity(intent);
             }
         });
